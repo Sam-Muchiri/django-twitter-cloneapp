@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogsPage</title>
+    <link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+</head>
+<body>
+    <nav>
+        <a class="home-btn" href="{% url 'home' %}">Home</a>
+        <!-- <a href="{% url 'mainapp:create_blog' %}">create</a> -->
+        <form action="{% url 'mainapp:searchblog' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="search" id="">
+            <button>Search</button>
+        </form>
+    </nav>
+    
+    <div class="blogs_body">
+        {% if posts %}
+        {% load blog_extras %}
+       
+            {% for post in posts %}
+             
+            <div class="blog_body">
+                <div class="title">
+                    <a href="{% url 'mainapp:profile' post.user.id %}" class="user">@{{post.user.username}}</a>
+                    <img src="{{post.user.profiles.Avatar.url}}" alt="User Profile Picture" class="profile-pic">
+                    
+                </div>
+                
+                <div class="body">
+                    <div class="post-cover">
+                        {% if post.post|length > 200%}
+                        <a href="{% url 'mainapp:blog' post.id %}" class="post">
+                            {{post.post| truncate_chars:200 }}   
+                            <p class="create"><a href="{% url 'mainapp:create_blog' %}">+</a></p>
+                            
+                        </a>
+                        <p><a href="{% url 'mainapp:blog' post.id %}">Read more</a></p>
+                        {% else %}
+                        <a href="{% url 'mainapp:blog' post.id %}" class="post">
+                            {{post.post}}   
+                            <p class="create"><a href="{% url 'mainapp:create_blog' %}">+</a></p>
+                            
+                        </a>
+                        {% endif %}
+                    </div>
+                    <p class="date">{{post.date_created}}</p>
+                </div>
+                
+            </div>
+            
+            
+            <hr>
+            {% endfor %}
+        {% else %}
+            <p>No blog created</p>
+            <p class="create"><a href="{% url 'mainapp:create_blog' %}">+</a></p>
+        {% endif %}
+        
+        
+    </div>
+</body>
+</html>

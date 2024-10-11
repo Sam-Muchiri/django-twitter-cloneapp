@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'mainapp:blogs' %}">Back to blogs</a>
+    </nav>
+    <div class="blogs_body">
+        {% if searche %}
+        {% for post_searched in post_searched %}
+            <!-- {{post_searched.post}} -->
+            <div class="blog_body">
+                <div class="title">
+                    <img src="{{post_searched.user.profiles.Avatar.url}}" alt="User Profile Picture" class="profile-pic">
+                    <a href="{% url 'mainapp:profile' post_searched.user.id %}" class="user">@{{post_searched.user.username}}</a>
+                </div>
+                
+                <div class="body">
+                    <div class="post-cover"><a href="{% url 'mainapp:blog' post_searched.id %}" class="post">{{post_searched.post}}</a></div>
+                    <p class="date">{{post_searched.date_created}}</p>
+                </div>
+                
+            </div>
+            
+        {% endfor %}
+        {% else %}
+            no such post
+    {% endif %}
+    </div>
+    
+</body>
+</html>

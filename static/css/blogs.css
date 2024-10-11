@@ -1,0 +1,221 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #f5f8fa;
+    background-color: hsl(208, 58%, 42%);
+
+    width: 100%;
+}
+nav{
+    position: fixed;
+    /* width: 90%; */
+    top: 5px;
+    right: 5px;
+    border: 1px solid whitesmoke;
+    left: 5px;
+    height: 45px;
+    margin: 10px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
+}
+nav >a{
+    color: aliceblue;
+    text-decoration: none;
+    background: #120429;
+    padding: 10px;
+    border-radius: 10px;
+
+}
+nav >a:hover{
+    color: #120429;
+    background: whitesmoke;
+}
+form>input {
+    height: 30px;
+    outline: none;
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+}
+form>button{
+    height: 25px;
+    padding: 5px;
+    border-radius: 10px;
+    border: none; 
+}
+.blogs_body{
+    margin-top: 55px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    
+}
+.blog_body{
+    position: relative;
+    width: 60%;
+    display: flex;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(12, 1, 43, 0.966);
+    margin: 10px;
+    
+}
+.date{
+    color: #a8abad;
+}
+.post{
+    color: whitesmoke;
+    text-decoration: none;
+    
+}
+.post-cover{
+    padding: 15px;
+    height: auto;
+    /* position: relative; */
+}
+.create{
+    font-size: xx-large;
+    border: solid 1px #120429;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    background: blue;
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+}
+.create a{
+    color: aliceblue;
+    text-decoration: none;
+    cursor: pointer;
+    
+}
+
+.profile-pic {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 4px solid rgb(33, 248, 248);
+    
+}
+.title{
+    display: flex;
+    flex-direction: column;
+}
+
+.user{
+    color: #a8abad;
+    text-decoration: none;
+}
+
+@media screen and (max-width:768px) {
+    nav{
+        position: fixed;
+        
+        top: 5px;
+        right: 5px;
+        border: 1px solid whitesmoke;
+        left: 5px;
+        height: 45px;
+        
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+    }
+    .blog_body{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(12, 1, 43, 0.966);
+        margin: 10px;
+        /* padding: 15px; */
+    }
+}
+@media screen and (max-width:480px) {
+    nav{
+        position: fixed;
+        /* width: 90%; */
+        top: 5px;
+        right: 5px;
+        border: 1px solid whitesmoke;
+        left: 5px;
+        height: 45px;
+        /* margin: 10px; */
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        /* background: rgb(29, 97, 245); */
+    }
+    .blog_body{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(12, 1, 43, 0.966);
+        margin: 10px;
+        /* padding: 15px; */
+    }
+    .date{
+        color: #a8abad;
+        font-size: smaller;
+        margin: 5px;
+    }
+    nav{
+        position: fixed;
+        /* width: 90%; */
+        top: 0;
+        right: 0;
+        border: 1px solid whitesmoke;
+        left: 5px;
+        height: 45px;
+        margin: 0;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+    }
+    nav >a{
+        color: aliceblue;
+        text-decoration: none;
+        background: #120429;
+        padding: 5px;
+        border-radius: 10px;
+    
+    }
+    form>input {
+        height: 25px;
+        outline: none;
+        padding: 0;
+        border-radius: 10px;
+        border: none;
+    }
+    .create{
+        font-size: x-large;
+        border: solid 1px #120429;
+        padding: 2px;
+        margin: 2px;
+        border-radius: 5px;
+        background: blue;
+        position: absolute;
+        right: 0;
+        bottom: 5px;
+    }
+
+}

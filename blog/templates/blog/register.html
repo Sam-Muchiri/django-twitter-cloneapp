@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-DyZvI8X5tDkG1w7c2cDgOb6FY2Jq6+0cN8U5xPU78YYe3U0K+B6X2IzjQl9C7l9q" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-1R0XeWmCymg0V4S/9gXEG48r18d3iF4ZbsIb4g8IB4EGBvUj8cQp8DeT4AZhShp5" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    
+    
+    <style>
+        .fieldd {background: rgb(255, 255, 255);}
+        .errorlist li{color: red;}
+        .errorlist li::marker{content: '🚨';}
+        .helptext{display: block;
+        color: rgb(28, 31, 28);}
+        .box{box-shadow: 1px 0px 2px rgb(191, 191, 224);
+        
+    padding: 50px;
+    width: 90%;}
+    
+    </style>
+    <form action="{% url 'signup' %}" class="form" method="post">
+        <h2 class="title">sign up</h2>
+        {% for message in messages %}
+        {{message}}
+        {% endfor %}
+        {% csrf_token %}
+        {{ form.as_p}}
+        
+        <button class="btn">signup</button>
+        <p>if you already have an account,<a class="link" href="{% url 'signin' %}">login</a></p>
+    
+        
+    </form>
+</body>
+</html>
+

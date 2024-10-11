@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #f5f8fa;
+    background-color: hsl(208, 58%, 42%);
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+nav{
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 90%;
+}
+img{
+    width: 150px;
+    height: auto;
+}
+nav >a{
+    color: aliceblue;
+    width: 120px;
+    background: #492ad1;
+    height: 25px;
+    padding: 10px;
+}
+
+form{
+    width: 70%;
+    height: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: #000;
+    box-shadow: 0 0 15px rgba(12, 1, 43, 0.966);
+}
+form>p{
+    width: 100%;
+    padding-bottom: 25px;
+}
+form>p>input{
+    border: none;
+    padding: 10px;
+}
+form> .btn{
+    border: none;
+    width: 70px;
+    height: 25px;
+}
+.btn{
+    background-color: #1da1f2;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+form .post{
+    border: none;
+    padding: 10px 20px;
+    width: 100%;
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Blog</title>
+    <link rel="stylesheet" href="{% static 'css/update.css' %}">
+</head>
+<body>
+    
+    <form class="form" action="{% url 'mainapp:editblog' post.id %}" method="post">
+        {% csrf_token %}
+        <!-- {{form}} -->
+        
+            <p class="post">{{form.post}}</p>
+        <input type="submit" class="btn"  value="edit">
+    </form>
+</body>
+</html>

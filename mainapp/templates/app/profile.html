@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProfilePage</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+  </head>
+  {% if profile %}
+  <body>
+    <!-- <img src="{{request.user.profiles.Avatar.url}}" width="40px"> -->
+
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <h1>Profile</h1>
+          <nav>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="{% url 'mainapp:blogs' %}">Blogs</a></li>
+              <!-- <li><a href="/notifications">Notifications</a></li> -->
+              <!-- <li><a href="/messages">Messages</a></li> -->
+              {% if request.user.id == profile.user.id %}
+              <li>
+                <a href="{% url 'mainapp:updateprofile'  %}">Update Profile</a>
+              </li>
+              {% endif %}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <section class="profile-banner">
+      <div class="container">
+        <h1>{{profile.user.username}}'s Profile</h1>
+        <div class="banner-img"></div>
+        <div class="profile-info">
+          <img
+            src="{{profile.Avatar.url}}"
+            alt="User Profile Picture"
+            class="profile-pic"
+          />
+          <div class="profile-details">
+            <p>Username:{{profile.user}}</p>
+            <div>
+              <p><strong>Email: </strong>{{profile.user.email}}</p>
+            </div>
+
+            <p><strong>Country: </strong>{{profile.location}}</p>
+            <p><strong>Gender:</strong>{{profile.gender}}</p>
+            <p class="bio"><strong>Bio: </strong>{{profile.bio}}</p>
+            <p><strong>Joined: </strong>{{profile.date_joined}}</p>
+            <form method="post">
+              {% csrf_token %} 
+              {% if profile in user.profiles.follows.all %}
+              <button class="follow-btn" name="follows" value="follow">
+                follow
+              </button>
+              {% else %}
+              <button class="follow-btn" name="unfollow">unFollow.</button>
+              {% endif %}
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="profile-nav">
+      <div class="container">
+        <ul>
+          <li><a href="# posts">Posts</a></li>
+          <li><a href="#followers">Followers</a></li>
+          <li><a href="#">Likes</a></li>
+        </ul>
+      </div>
+    </section>
+    <section id="followers" class="followers">
+      <ul>
+        <li>
+          {% for following in profile.follows.all %} {{following}} {% endfor %}
+        </li>
+      </ul>
+    </section>
+
+    <section id="posts" class="profile-timeline posts">
+      <div class="container">
+        {% if blogs %} {% for blog in blogs %}
+
+        <div class="post">
+          <h4><a href="#">{{profile.user.username}}'s Profile's Posts</a></h4>
+          <p>Posted on: {{blog.date_created}}</p>
+          <p>{{blog.post}}.</p>
+        </div>
+        {% endfor %} {% else %} NO POSTS {% endif %}
+
+        
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2024 Blog App. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+  {% endif %}
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{% static 'css/update.css' %}">
+</head>
+<body>
+    
+    <nav>
+        <h1>
+            profile page
+            
+        </h1>
+        <a href="{% url 'mainapp:blogs' %}">Back to blogs</a>
+    </nav>
+    <img src="{{request.user.profiles.Avatar.url}}" >
+    
+    
+
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" class="btn" value="update">
+    </form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+</head>
+<body>
+    <nav>
+        <h2>Post</h2>
+     <a href="{% url 'mainapp:blogs' %}">Back to blogs</a>
+    </nav>
+    
+    <div class="blog">
+        <div class="title">
+            <p>
+                <a href="{% url 'mainapp:profile' post.user.id %}">@{{post.user.username}}</a>
+            </p>
+                <a href="{% url 'mainapp:profile' post.user.id %}"><img src="{{post.user.profiles.Avatar.url}}" alt="{{post.user.username}}" class="profile-pic"></a>
+                         
+        </div>
+        <div class="body">
+            <div class="btns">
+                <a href="{% url 'mainapp:deleteblog' post.id %}" class="btn">Delete</a>
+                <a href="{% url 'mainapp:editblog' post.id %}" class="btn">Edit</a>
+             </div>
+            <p>{{post.post}}</p>
+            <hr class="line">
+            
+            <p class="date">{{post.date_created}}</p>
+            <hr>
+        </div>
+        
+    </div>
+</body>
+</html>
